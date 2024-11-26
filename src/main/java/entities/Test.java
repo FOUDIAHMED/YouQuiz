@@ -19,7 +19,7 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-
+    private String description;
     private Duration duration;
     private double score;
     private boolean canSeeAnswers;

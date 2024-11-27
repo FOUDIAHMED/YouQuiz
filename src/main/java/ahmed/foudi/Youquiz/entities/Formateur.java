@@ -7,13 +7,13 @@ import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-//@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper=true)
 @Entity
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Table(name = "formateur")
-//@PrimaryKeyJoinColumn(name = "formateur_id")
+@PrimaryKeyJoinColumn(name = "formateur_id")
 public class Formateur extends User {
 
     private String Specialite;

@@ -1,14 +1,11 @@
 package entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,5 +14,7 @@ import java.time.LocalDate;
 public class Formateur extends User {
 
     private String Specialite;
+    @OneToMany(mappedBy = "formateur", fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+    private List<Quiz> quizzes;
 
 }

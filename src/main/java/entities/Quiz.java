@@ -1,20 +1,18 @@
 package entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.time.Duration;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-public class Test {
+public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,5 +22,14 @@ public class Test {
     private double score;
     private boolean canSeeAnswers;
     private boolean canSeeResult;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "formateur_id", nullable = false)
+    private Formateur formateur;
+
+    @OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)
+    private List<QuizAssignement> quizAssignements;
+
+
 
 }

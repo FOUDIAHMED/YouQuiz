@@ -30,6 +30,7 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)
     private List<QuizAssignement> quizAssignements;
 
-
+    @OneToMany(mappedBy = "quiz", fetch = FetchType.EAGER)
+    private List<QuizQuestion> quizQuestions;
 
 }

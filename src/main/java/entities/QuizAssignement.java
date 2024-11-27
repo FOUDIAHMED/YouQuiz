@@ -2,10 +2,16 @@ package entities;
 
 import entities.embedded.StudentQuizKey;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Data
+@RequiredArgsConstructor
 public class QuizAssignement {
     @EmbeddedId
     private StudentQuizKey id;
@@ -17,6 +23,7 @@ public class QuizAssignement {
     private int attempts;
     public double score;
     public double result;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("studentId")
     @JoinColumn(name = "student_id")
@@ -27,5 +34,6 @@ public class QuizAssignement {
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<AnswerValidation> answerValidations;
 }

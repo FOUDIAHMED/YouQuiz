@@ -6,10 +6,10 @@ import lombok.Data;
 
 @Embeddable
 @Data
-public class StudentQuizKey {
-    @Column(name = "student_id")
-    Long studentId;
+public class QuizQuestionKey {
+    @Column(name = "question_id")
+    private Long questionId;
 
     @Column(name = "quiz_id")
-    Long quizId;
+    private Long quizId;
 }

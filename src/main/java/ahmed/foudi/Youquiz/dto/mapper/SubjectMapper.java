@@ -14,7 +14,6 @@ public interface SubjectMapper extends GenericMapper<Subject, SubjectRequestDto,
     Subject toEntity(SubjectRequestDto requestDto);
 
     @Override
-    @Mapping(source = "subject", target = "subject")
     SubjectResponseDto toResponseDto(Subject entity);
 
     @Override

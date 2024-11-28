@@ -15,6 +15,10 @@ import java.util.List;
 @Table(name = "student")
 //@PrimaryKeyJoinColumn(name = "student_id")
 public class Student extends User {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    protected Long id;
+
     private LocalDate registrationDate;
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<QuizAssignement> quizAssignements;

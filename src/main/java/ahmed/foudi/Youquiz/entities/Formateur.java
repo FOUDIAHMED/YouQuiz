@@ -3,21 +3,22 @@ package ahmed.foudi.Youquiz.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-@EqualsAndHashCode(callSuper=true)
+
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Table(name = "formateur")
-@PrimaryKeyJoinColumn(name = "formateur_id")
 public class Formateur extends User {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    protected Long id;
 
-    private String Specialite;
-    @OneToMany(mappedBy = "formateur", fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+
+    private String specialite;
+    
+    @OneToMany(mappedBy = "formateur")
     private List<Quiz> quizzes;
-
 }

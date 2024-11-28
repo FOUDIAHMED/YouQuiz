@@ -7,16 +7,12 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "users")
+
+@MappedSuperclass
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    protected Long id;
 
     protected String nom;
 

@@ -1,4 +1,4 @@
-package ahmed.foudi.Youquiz.Service.interfaces;
+package ahmed.foudi.Youquiz.service.interfaces;
 
 import ahmed.foudi.Youquiz.dto.formateur.FormateurRequestDto;
 import ahmed.foudi.Youquiz.dto.formateur.FormateurResponseDto;

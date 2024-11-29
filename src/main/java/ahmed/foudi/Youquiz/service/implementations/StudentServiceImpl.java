@@ -1,11 +1,12 @@
-package ahmed.foudi.Youquiz.Service.implementations;
+package ahmed.foudi.Youquiz.service.implementations;
 
-import ahmed.foudi.Youquiz.Service.interfaces.StudentService;
+import ahmed.foudi.Youquiz.service.interfaces.StudentService;
 import ahmed.foudi.Youquiz.dto.mapper.StudentMapper;
 import ahmed.foudi.Youquiz.dto.student.StudentRequestDto;
 import ahmed.foudi.Youquiz.dto.student.StudentResponseDto;
 import ahmed.foudi.Youquiz.repository.StudentRepository;
 import ahmed.foudi.Youquiz.entities.Student;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentResponseDto update(Long id, StudentRequestDto studentRequestDto) {
         Student existingStudent = studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
 
         // Update the existing student's properties
         existingStudent.setNom(studentRequestDto.getNom());
@@ -41,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void delete(Long id) {
         if (!studentRepository.existsById(id)) {
-            throw new RuntimeException("Student not found");
+            throw new EntityNotFoundException("Student not found");
         }
         studentRepository.deleteById(id);
     }
@@ -49,7 +50,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentResponseDto findById(Long id) {
         Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
         return studentMapper.toResponseDto(student);
     }
 }

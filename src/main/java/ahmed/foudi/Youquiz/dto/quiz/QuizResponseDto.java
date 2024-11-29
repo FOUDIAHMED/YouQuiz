@@ -2,6 +2,7 @@ package ahmed.foudi.Youquiz.dto.quiz;
 
 import ahmed.foudi.Youquiz.dto.formateur.FormateurEmbeddedDto;
 import ahmed.foudi.Youquiz.dto.quizquestion.QuizQuestionEmbeddedDto;
+import ahmed.foudi.Youquiz.dto.quizquestion.QuizQuestionResponseDto;
 import lombok.Data;
 import java.time.Duration;
 import java.util.List;
@@ -16,5 +17,5 @@ public class QuizResponseDto {
     private boolean canSeeAnswers;
     private boolean canSeeResult;
     private FormateurEmbeddedDto formateur;
-    private List<QuizQuestionEmbeddedDto> quizQuestions;
+    private List<QuizQuestionResponseDto> quizQuestions;
 } 

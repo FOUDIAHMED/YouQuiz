@@ -1,11 +1,12 @@
-package ahmed.foudi.Youquiz.Service.implementations;
+package ahmed.foudi.Youquiz.service.implementations;
 
 import ahmed.foudi.Youquiz.repository.FormateurRepository;
-import ahmed.foudi.Youquiz.Service.interfaces.FormateurService;
+import ahmed.foudi.Youquiz.service.interfaces.FormateurService;
 import ahmed.foudi.Youquiz.dto.formateur.FormateurRequestDto;
 import ahmed.foudi.Youquiz.dto.formateur.FormateurResponseDto;
 import ahmed.foudi.Youquiz.dto.mapper.FormateurMapper;
 import ahmed.foudi.Youquiz.entities.Formateur;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class FormateurServiceImpl implements FormateurService {
     @Override
     public FormateurResponseDto update(Long id, FormateurRequestDto formateurRequestDto) {
         Formateur existingFormateur = formateurRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Formateur not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Formateur not found"));
 
         existingFormateur.setNom(formateurRequestDto.getNom());
         existingFormateur.setPrenom(formateurRequestDto.getPrenom());
@@ -40,7 +41,7 @@ public class FormateurServiceImpl implements FormateurService {
     @Override
     public void delete(Long id) {
         if (!formateurRepository.existsById(id)) {
-            throw new RuntimeException("Formateur not found");
+            throw new EntityNotFoundException("Formateur not found");
         }
         formateurRepository.deleteById(id);
     }
@@ -48,7 +49,7 @@ public class FormateurServiceImpl implements FormateurService {
     @Override
     public FormateurResponseDto findById(Long id) {
         Formateur formateur = formateurRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Formateur not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Formateur not found"));
         return formateurMapper.toResponseDto(formateur);
     }
 }

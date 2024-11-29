@@ -1,6 +1,6 @@
 package ahmed.foudi.Youquiz.controller;
 
-import ahmed.foudi.Youquiz.Service.interfaces.StudentService;
+import ahmed.foudi.Youquiz.service.interfaces.StudentService;
 import ahmed.foudi.Youquiz.dto.student.StudentRequestDto;
 import ahmed.foudi.Youquiz.dto.student.StudentResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +29,7 @@ public class StudentController {
         formateurService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<StudentResponseDto> findById(@PathVariable Long id) {

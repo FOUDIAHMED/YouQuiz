@@ -1,6 +1,6 @@
-package ahmed.foudi.Youquiz.Service.implementations;
+package ahmed.foudi.Youquiz.service.implementations;
 
-import ahmed.foudi.Youquiz.Service.interfaces.QuestionService;
+import ahmed.foudi.Youquiz.service.interfaces.QuestionService;
 import ahmed.foudi.Youquiz.dto.question.QuestionRequestDto;
 import ahmed.foudi.Youquiz.dto.question.QuestionResponseDto;
 import org.springframework.stereotype.Service;

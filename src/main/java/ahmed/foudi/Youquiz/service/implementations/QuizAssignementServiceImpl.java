@@ -1,6 +1,6 @@
-package ahmed.foudi.Youquiz.Service.implementations;
+package ahmed.foudi.Youquiz.service.implementations;
 
-import ahmed.foudi.Youquiz.Service.interfaces.QuizAssignmentService;
+import ahmed.foudi.Youquiz.service.interfaces.QuizAssignmentService;
 import ahmed.foudi.Youquiz.dto.quizassignment.QuizAssignmentRequestDto;
 import ahmed.foudi.Youquiz.dto.quizassignment.QuizAssignmentResponseDto;
 import org.springframework.stereotype.Service;

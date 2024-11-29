@@ -1,6 +1,6 @@
 package ahmed.foudi.Youquiz.controller;
 
-import ahmed.foudi.Youquiz.Service.interfaces.FormateurService;
+import ahmed.foudi.Youquiz.service.interfaces.FormateurService;
 import ahmed.foudi.Youquiz.dto.formateur.FormateurRequestDto;
 import ahmed.foudi.Youquiz.dto.formateur.FormateurResponseDto;
 import lombok.RequiredArgsConstructor;

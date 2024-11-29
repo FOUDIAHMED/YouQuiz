@@ -1,4 +1,4 @@
-package ahmed.foudi.Youquiz.Service.interfaces;
+package ahmed.foudi.Youquiz.service.interfaces;
 
 import ahmed.foudi.Youquiz.dto.student.StudentRequestDto;
 import ahmed.foudi.Youquiz.dto.student.StudentResponseDto;

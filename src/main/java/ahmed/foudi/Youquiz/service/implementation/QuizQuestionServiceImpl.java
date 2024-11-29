@@ -11,6 +11,7 @@ import ahmed.foudi.Youquiz.repository.QuizQuestionRepository;
 import ahmed.foudi.Youquiz.repository.QuizRepository;
 import ahmed.foudi.Youquiz.repository.QuestionRepository;
 import ahmed.foudi.Youquiz.service.interfaces.QuizQuestionService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +27,10 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
     @Override
     public QuizQuestionResponseDto create(QuizQuestionRequestDto quizQuestionRequestDto) {
         Quiz quiz = quizRepository.findById(quizQuestionRequestDto.getQuizId())
-                .orElseThrow(() -> new RuntimeException("Quiz not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Quiz not found"));
                 
         Question question = questionRepository.findById(quizQuestionRequestDto.getQuestionId())
-                .orElseThrow(() -> new RuntimeException("Question not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Question not found"));
 
         QuizQuestion quizQuestion = quizQuestionMapper.toEntity(quizQuestionRequestDto);
         QuizQuestion savedQuizQuestion = quizQuestionRepository.save(quizQuestion);
@@ -39,9 +40,11 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
 
     @Override
     public QuizQuestionResponseDto update(Long quizId, Long questionId, QuizQuestionRequestDto quizQuestionRequestDto) {
-        QuizQuestionKey id = new QuizQuestionKey(quizId, questionId);
+        QuizQuestionKey id = new QuizQuestionKey();
+        id.setQuizId(quizId);
+        id.setQuestionId(questionId);
         QuizQuestion existingQuizQuestion = quizQuestionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("QuizQuestion not found"));
+                .orElseThrow(() -> new EntityNotFoundException("QuizQuestion not found"));
 
         QuizQuestion updatedQuizQuestion = quizQuestionMapper.toEntity(quizQuestionRequestDto);
         QuizQuestion savedQuizQuestion = quizQuestionRepository.save(updatedQuizQuestion);
@@ -51,18 +54,22 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
 
     @Override
     public void delete(Long quizId, Long questionId) {
-        QuizQuestionKey id = new QuizQuestionKey(quizId, questionId);
+        QuizQuestionKey id = new QuizQuestionKey();
+        id.setQuizId(quizId);
+        id.setQuestionId(questionId);
         if (!quizQuestionRepository.existsById(id)) {
-            throw new RuntimeException("QuizQuestion not found");
+            throw new EntityNotFoundException("QuizQuestion not found");
         }
         quizQuestionRepository.deleteById(id);
     }
 
     @Override
     public QuizQuestionResponseDto findById(Long quizId, Long questionId) {
-        QuizQuestionKey id = new QuizQuestionKey(quizId, questionId);
+        QuizQuestionKey id = new QuizQuestionKey();
+        id.setQuizId(quizId);
+        id.setQuestionId(questionId);
         QuizQuestion quizQuestion = quizQuestionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("QuizQuestion not found"));
+                .orElseThrow(() -> new EntityNotFoundException("QuizQuestion not found"));
         return quizQuestionMapper.toResponseDto(quizQuestion);
     }
 } 

@@ -1,4 +1,4 @@
-package ahmed.foudi.Youquiz.service.implementations;
+package ahmed.foudi.Youquiz.service.implementation;
 
 import ahmed.foudi.Youquiz.service.interfaces.QuizAssignmentService;
 import ahmed.foudi.Youquiz.dto.quizassignment.QuizAssignmentRequestDto;

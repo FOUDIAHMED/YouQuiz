@@ -33,6 +33,6 @@ public class QuizAssignement {
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<AnswerValidation> answerValidations;
 }

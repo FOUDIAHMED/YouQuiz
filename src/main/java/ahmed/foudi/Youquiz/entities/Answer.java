@@ -15,9 +15,7 @@ public class Answer {
     private Long id;
     private String answer;
 
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Question question;
+
 
     @OneToMany(mappedBy = "answer",fetch = FetchType.EAGER)
     private List<AnswerQuestion> answerQuestions;

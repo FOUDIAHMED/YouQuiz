@@ -6,4 +6,5 @@ import lombok.Data;
 public class AnswerRequestDto {
     private String answer;
     private Long questionId;
+    private double points;
 } 

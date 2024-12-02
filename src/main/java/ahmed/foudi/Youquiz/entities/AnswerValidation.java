@@ -24,8 +24,8 @@ public class AnswerValidation {
     @JoinColumn(name = "answer_id")
     private Answer answer;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<QuizAssignement> quizAssignements;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private QuizAssignement quizAssignement;
 
     private double points;
 
